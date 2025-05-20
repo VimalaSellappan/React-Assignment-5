@@ -3,24 +3,21 @@ import { useState,useEffect } from 'react';
 
 function DogGameLogic()
  {
-  const [DogImage, setDogImage] = useState('');
+  const [DogImage, setDogImage] = useState('');  
   const [isLoading, setisLoading] = useState(true);
-    function fetchDogImage()
-     {
-      setisLoading(true);
-      fetch('https://dog.ceo/api/breeds/image/random')  
-        .then(response => response.json())
-        .then(data =>
-          {
-          setDogImage(data.message);
-          setisLoading(false);
-          })
-    .catch(error => 
-      {
-      console.error('Error fetching dog image:', error);
+  const fetchDogImage = async () => {
+    setisLoading(true);
+  try {
+    const response = await fetch('https://dog.ceo/api/breeds/image/random');
+    const data = await response.json();
+    setDogImage(data.message);
+  } catch (error) {
+    console.error('Error fetching image:', error);
+  }
+  finally {
       setisLoading(false);
-      });
-      }
+    }
+};
 useEffect(() => {
     fetchDogImage();
   }, []);
