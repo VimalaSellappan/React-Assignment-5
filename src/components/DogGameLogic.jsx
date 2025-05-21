@@ -137,7 +137,7 @@ useEffect(() => {
             <p style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '15px',color:'blue' }}>
               {selectedOption === breed
                 ? 'Correct!'
-                : `Wrong! The correct answer is "${breed}".`}
+                : `Wrong! `}
             </p>
           )}
         </div>
@@ -156,7 +156,9 @@ useEffect(() => {
         <div className="popup">
           <div className="popup-content">
             <h2>You Lost!</h2>
+            <p className='correct-ans'>The correct answer is "{breed}".</p>
             <p>Your Score is:{score}</p>
+                   
             <button onClick={handleRetry} className="retry-btn">Try Again</button>
           </div>
         </div>
