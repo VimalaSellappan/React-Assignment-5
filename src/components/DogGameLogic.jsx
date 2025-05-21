@@ -94,7 +94,7 @@ useEffect(() => {
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     if (option === breed) {
-      const score=setScore(prev => prev + 1);}
+      setScore(prev => prev + 1);}
       else{
       setShowLostPopup(true);
       }
@@ -144,11 +144,12 @@ useEffect(() => {
       </div>
           
       <br />
+      {selectedOption === breed && !showLostPopup && (
       <div className='nxt-btn-container'>
           <button onClick={fetchDogImage} disabled={isLoading}className='nxt-btn' >
             SHOW NEXT
           </button>
-      </div>
+      </div>)}
         </>
       )}
       {showLostPopup && (
