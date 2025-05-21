@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
+import './DogGameLogic.css';
 
 function DogGameLogic()
  {
@@ -94,8 +95,11 @@ useEffect(() => {
   return (
     <div>
       <h1>Dog Matcher Game</h1>
-      {isLoading ? (<p style={{ fontSize: '32px', fontWeight: 'bold' }}>Loading...</p>) : (<><img src={DogImage} alt="Dog" width="400" />
-      <div>
+      {isLoading ? (<p style={{ fontSize: '32px', fontWeight: 'bold' }}>Loading...</p>) : (
+        <>
+      <div className="main-container">
+        <div><img src={DogImage}  className="Dogimage" alt="Dog" /></div>
+        <div className='option-container'>
           {options.map(option => {
             let buttonStyle = {};
             if (selectedOption) {
@@ -115,20 +119,22 @@ useEffect(() => {
               </button>
             );
           })}
+          {selectedOption && (
+            <p style={{ fontSize: '20px', fontWeight: 'bold', marginTop: '15px' }}>
+              {selectedOption === breed
+                ? 'Correct!'
+                : `Wrong! The correct answer is "${breed}".`}
+            </p>
+          )}
         </div>
-
-        {selectedOption && (
-          <p style={{ fontSize: '20px', fontWeight: 'bold', marginTop: '15px' }}>
-            {selectedOption === breed
-              ? 'Correct!'
-              : `Wrong! The correct answer is "${breed}".`}
-          </p>
-        )}
-
-          <br />
-          <button onClick={fetchDogImage} disabled={isLoading}>
+      </div>
+          
+      <br />
+      <div className='nxt-btn'>
+          <button onClick={fetchDogImage} disabled={isLoading} >
             SHOW NEXT
           </button>
+      </div>
         </>
       )}
     </div>
