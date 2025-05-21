@@ -10,6 +10,7 @@ function DogGameLogic()
   const [options, setOptions] = useState([]);
   const [isLoading, setisLoading] = useState(true);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [showLostPopup, setShowLostPopup] = useState(false);
   function selectBreed(url) {
     const parts = url.split('/');
     const breedIndex = parts.indexOf('breeds');
@@ -90,8 +91,14 @@ useEffect(() => {
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
+    if (option !== breed) {
+      setShowLostPopup(true);
+    }
   };
-
+  const handleRetry = () => {
+    setShowLostPopup(false);
+    fetchDogImage();
+  };
   return (
     <div>
       <h1>Dog Matcher Game</h1>
@@ -120,7 +127,7 @@ useEffect(() => {
             );
           })}
           {selectedOption && (
-            <p style={{ fontSize: '20px', fontWeight: 'bold', marginTop: '15px' }}>
+            <p style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '15px',color:'blue' }}>
               {selectedOption === breed
                 ? 'Correct!'
                 : `Wrong! The correct answer is "${breed}".`}
@@ -130,12 +137,21 @@ useEffect(() => {
       </div>
           
       <br />
-      <div className='nxt-btn'>
-          <button onClick={fetchDogImage} disabled={isLoading} >
+      <div className='nxt-btn-container'>
+          <button onClick={fetchDogImage} disabled={isLoading}className='nxt-btn' >
             SHOW NEXT
           </button>
       </div>
         </>
+      )}
+      {showLostPopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <h2>You Lost!</h2>
+            <p>Wrong answer selected.</p>
+            <button onClick={handleRetry} className="retry-btn">Try Again</button>
+          </div>
+        </div>
       )}
     </div>
   );
