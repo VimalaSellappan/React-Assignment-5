@@ -105,3 +105,13 @@ button:focus-visible {
   border-radius: 8px;
   cursor: pointer;
 }
+h2 {
+  margin-top: -10px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-family: 'poppins',sans-serif;
+
+}

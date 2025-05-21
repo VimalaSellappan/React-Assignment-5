@@ -11,6 +11,8 @@ function DogGameLogic()
   const [isLoading, setisLoading] = useState(true);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showLostPopup, setShowLostPopup] = useState(false);
+  const [score, setScore] = useState(0);
+
   function selectBreed(url) {
     const parts = url.split('/');
     const breedIndex = parts.indexOf('breeds');
@@ -91,17 +93,22 @@ useEffect(() => {
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
-    if (option !== breed) {
+    if (option === breed) {
+      const score=setScore(prev => prev + 1);}
+      else{
       setShowLostPopup(true);
+      }
     }
-  };
+  
   const handleRetry = () => {
     setShowLostPopup(false);
+    setScore(0); 
     fetchDogImage();
   };
   return (
     <div>
       <h1>Dog Matcher Game</h1>
+      <h2>Score: {score}</h2>
       {isLoading ? (<p style={{ fontSize: '32px', fontWeight: 'bold' }}>Loading...</p>) : (
         <>
       <div className="main-container">
@@ -148,7 +155,7 @@ useEffect(() => {
         <div className="popup">
           <div className="popup-content">
             <h2>You Lost!</h2>
-            <p>Wrong answer selected.</p>
+            <p>Your Score is:{score}</p>
             <button onClick={handleRetry} className="retry-btn">Try Again</button>
           </div>
         </div>
