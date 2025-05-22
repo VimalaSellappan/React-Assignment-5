@@ -55,7 +55,7 @@ h2{
     width: 100%;
     max-width: 800px;
     background-color: #e8c187;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
 
 }
@@ -94,6 +94,15 @@ button[type=submit] {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+
+}
+button[type="submit"]:hover {
+  background-color: #ff4a4a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 .signin{
     font-family: 'poppins',sans-serif;
