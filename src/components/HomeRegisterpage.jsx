@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './HomeRegisterpage.css'
 function HomeRegisterpage() {
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/login'); 
+  };
   return (
     <div className="home-container">
       <div className="welcome-part">
@@ -13,7 +19,7 @@ function HomeRegisterpage() {
         
         <div className="form-section">
         <h2>Sign Up here</h2>
-        <form className='form-container'>
+        <form className='form-container' onSubmit={handleSubmit}>
           <div className='form-content'>
             <input type="text" placeholder="Full Name" required />
             <input type="email" placeholder="Email" required />
