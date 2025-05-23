@@ -5,9 +5,8 @@ import './HomeRegisterpage.css';
 
 
 function Login() {
-      const navigate = useNavigate();
-
-  const handleLogin = (e) => {
+    const navigate = useNavigate();
+    const handleLogin = (e) => {
     e.preventDefault();    
     navigate('/game'); 
   };
