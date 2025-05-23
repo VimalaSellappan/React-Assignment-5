@@ -10,6 +10,24 @@ h1{
     color: goldenrod;
     -webkit-text-stroke: 1px black;   
 }
+.header-container {
+  position: relative;
+  text-align: center;
+  padding: 5px 0;
+}
+.exit-link{
+  font-family: 'poppins',sans-serif;
+  font-size: 30px;
+  padding-top: 50px;
+  text-decoration: none;
+  color: red;
+  -webkit-text-stroke: 1px grey; 
+  font-weight: 800;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+ 
+}
 .Dogimage{
     width: 600px;
     height: 400px;

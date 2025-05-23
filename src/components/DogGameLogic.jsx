@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './DogGameLogic.css';
 
 function DogGameLogic()
@@ -12,7 +13,7 @@ function DogGameLogic()
   const [selectedOption, setSelectedOption] = useState(null);
   const [showLostPopup, setShowLostPopup] = useState(false);
   const [score, setScore] = useState(0);
-
+ 
   function selectBreed(url) {
     const parts = url.split('/');
     const breedIndex = parts.indexOf('breeds');
@@ -107,7 +108,9 @@ useEffect(() => {
   };
   return (
     <div>
-      <h1>Dog Matcher Game</h1>
+      <div className='header-container'><h1>Dog Matcher Game</h1>
+       <Link to="/" className="exit-link">Exit</Link>
+       </div>
       <h2>Score: {score}</h2>
       {isLoading ? (<p style={{ fontSize: '32px', fontWeight: 'bold' }}>Loading...</p>) : (
         <>
@@ -157,10 +160,9 @@ useEffect(() => {
           <div className="popup-content">
             <h2>You Lost!</h2>
             <p className='correct-ans'>The correct answer is "{breed}".</p>
-            <p>Your Score is:{score}</p>
-                   
+            <p>Your Score is:{score}</p>  
             <button onClick={handleRetry} className="retry-btn">Try Again</button>
-          </div>
+            </div>
         </div>
       )}
     </div>
