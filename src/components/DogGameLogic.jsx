@@ -108,7 +108,7 @@ useEffect(() => {
   };
   return (
     <div>
-      <div className='header-container'><h1>Dog Matcher Game</h1>
+      <div className='header-container'><h1>Dog Matcher</h1>
        <Link to="/" className="exit-link">Exit</Link>
        </div>
       <h2>Score: {score}</h2>
